@@ -1,0 +1,29 @@
+﻿{
+    "propertyEditors": [
+        {
+            "alias": "MediaReference",
+            "name": "Media Reference",
+            "editor": {
+                "view": "~/App_Plugins/MediaReference/view.html",
+                "valueType": "JSON"
+            },
+            "prevalues": {
+                "fields": [
+                    {
+                        "label": "Api url",
+                        "description": "Enter the API url.",
+                        "key": "ApiUrl",
+                        "view": "~/Umbraco/Views/prevalueeditors/textstring.html"
+                    }
+                ]
+            }
+        }
+    ],
+
+    "javascript": [
+        "~/App_Plugins/plugins.js"
+    ],
+    "css": [
+        "~/App_Plugins/plugins.css"
+    ]
+}

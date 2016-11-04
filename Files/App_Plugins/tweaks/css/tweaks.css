@@ -1,0 +1,9 @@
+.umb-tree div {
+  overflow: visible;
+}
+.umb-tree li {
+  min-width: 104%;
+}
+.btn-toolbar.pull-right.umb-btn-toolbar ul.dropdown-menu.umb-actions {
+  z-index: 10000;
+}

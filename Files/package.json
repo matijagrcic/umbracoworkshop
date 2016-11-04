@@ -1,0 +1,26 @@
+{
+  "name": "ExtendingUmbraco",
+  "version": "0.0.0",
+  "description": "Config",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matija Grcic",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "flatten-packages": "^0.1.4",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-cli": "^1.2.0",
+    "typescript": "^2.0.6",
+    "grunt-ts": "^6.0.0-beta.3",
+    "requirejs": "^2.3.2"
+  }
+}

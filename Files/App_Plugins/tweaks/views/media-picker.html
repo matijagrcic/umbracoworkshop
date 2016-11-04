@@ -1,0 +1,112 @@
+﻿<style>
+    .search {
+        margin-left: auto;
+        margin-right: auto;
+        width: 90% !important;
+    }
+
+    .umb-modal .umb-panel-header {
+        padding: 10px;
+    }
+
+    #tweaked-media-picker #scrollable-typeahead-menu ul[id*='typeahead'].dropdown-menu {
+        max-height: 200px;
+        overflow-y: auto;
+        width: 89%;
+        display: block;
+    }
+
+    #tweaked-media-picker #scrollable-typeahead-menu {
+        margin: auto;
+        width: 90%;
+    }
+
+    #tweaked-media-picker input#autocomplete-picker {
+        width: 96%;
+    }
+
+    #tweaked-media-picker div.umb-photo {
+        cursor: pointer;
+    }
+
+    #tweaked-media-picker div.umb-panel-body {
+        top: 340px;
+    }
+
+    .typeahead-container {
+        margin-left: 10px;
+    }
+
+    .typeahead-title {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .typeahead-body {
+        margin-left: 20px;
+    }
+
+    .media-picker-divider {
+        height: 225px;
+        max-height: 225px;
+        padding-top: 79px;
+    }
+</style>
+
+<div class="umb-panel umb-dialogs-mediapicker browser" id="tweaked-media-picker" data-ng-controller="Umbraco.Plugins.Tweaks.Controller">
+    <div class="umb-panel-header">
+        <div class="form-group">
+            <div class="col-md-8">
+                <label class="control-label search">Search by image name or id</label>
+                <div id="scrollable-typeahead-menu">
+                    <input id="autocomplete-picker" class="form-control" type="text" ng-model="searchTerm.value"
+                           typeahead="selectedTypeaheadImage.Name for selectedTypeaheadImage in getImagesForTypeahead($viewValue)"
+                           typeahead-editable="false"
+                           typeahead-min-length="4"
+                           typeahead-loading="loadingImages"
+                           typeahead-on-select="onImageSelect($item, $model, $label)" />
+                </div>
+
+                <i ng-show="loadingImages" class="icon-axis-rotation large"></i>
+            </div>
+        </div>
+    </div>
+    <<div class="media-picker-divider">
+        <table class="table table-bordered table-striped table-hover" ng-if="selectedTypeaheadImage">
+            <thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Id</td>
+                    <td>{{selectedTypeaheadImage.Id}}</td>
+                <tr>
+                    <td>Name</td>
+                    <td>{{selectedTypeaheadImage.Name}}</td>
+                </tr>
+                <tr>
+                    <td>Creator</td>
+                    <td>{{selectedTypeaheadImage.CreatorName}}</td>
+                </tr>
+                <tr>
+                    <td>Created / Updated</td>
+                    <td>{{selectedTypeaheadImage.CreateDate | date}} / {{selectedTypeaheadImage.UpdateDate | date}}</td>
+                </tr>
+                <tr>
+                    <td>Width x Height</td>
+                    <td>{{selectedTypeaheadImage.Metadata.Width}} x {{selectedTypeaheadImage.Metadata.Height}} px</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="umb-panel-body" id="tweaked-media-picker-container">
+        <div class="umb-photo-folder">
+            <div class="picrow" ng-repeat="image in filteredImages | limitTo: numberOfImagesDisplayed track by image.Id" data-ng-controller="Umbraco.Dialogs.MediaPickerController">
+                <a ng-click="selectImage(image)" title="{{image.Name}}">
+                    <div class="umb-photo">
+                        <img ng-src="{{imageThumbnailUrl}}{{image.Metadata.FilePath}}" width="{{image.Metadata.Width}}" height="{{image.Metadata.Height}}" alt="{{image.Name}}" />
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿<link href="../../../../Css/bootstrap.3.grid.and.forms.min.css" rel="stylesheet" />
+
+<form id="media-maintenance" ng-controller="Umbraco.Plugins.MediaMaintenance.Controller">
+    <!--everything is set by using UmbracoCustomSettings.config-->
+    <umb-panel>
+        <umb-header tabs="Plugin.Tabs.All">
+            <div class="umb-headline-editor-wrapper span12">
+                <h1>{{Plugin.Name}} <button class="btn btn-success" ng-click="toggleNavigation()">Toggle Navigation</button></h1>
+            </div>
+        </umb-header>
+        <umb-tab-view>
+            <!--you need to set rel="{{tab.id}}" otherwise umb-tab doesn't show  until you click on it-->
+            <umb-tab data-ng-repeat="tab in Plugin.Tabs.All" id="tab{{tab.id}}" rel="{{tab.id}}">
+                <div class="umb-pane">
+                    <div data-ng-include="tab.Template"></div>
+                </div>
+            </umb-tab>
+        </umb-tab-view>
+    </umb-panel>
+</form>

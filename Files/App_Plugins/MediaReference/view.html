@@ -1,0 +1,43 @@
+﻿<link href="../../Css/bootstrap.3.grid.and.forms.min.css" rel="stylesheet" />
+
+<div ng-controller="Umbraco.Plugins.MediaReference.Controller">
+    <span class="hidden">{{model.value}}</span>
+
+    <div class="row">
+        <table id="media-reference-table" class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <td>Node Id</td>
+                    <td>Image Id</td>
+                    <td>Alt Text</td>
+                    <td>Url</td>
+                    <td>Creator</td>
+                    <td>Created</td>
+                    <td>Updated</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody ng-if="hasMediaReference()">
+                <tr ng-repeat="mediaReference in mediaReferences track by mediaReference.NodeId">
+                    <td>{{mediaReference.NodeId}}</td>
+                    <td>{{mediaReference.ImageId}}</td>
+                    <td>{{mediaReference.AltText}}</td>
+                    <td>{{mediaReference.Url}}</td>
+                    <td>{{mediaReference.CreatorName}}</td>
+                    <td>{{mediaReference.CreateDate | date}}</td>
+                    <td>{{mediaReference.UpdateDate | date}}</td>
+                    <td>
+                        <button type="button" class="btn btn-group-sm btn-success" ng-click="openMediaReferenceInNewTab(mediaReference)">
+                            Navigate
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody ng-if="!hasMediaReference()">
+                <tr>
+                    <td colspan="8">Media file doesn't have any references.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
